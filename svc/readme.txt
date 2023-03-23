@@ -1,0 +1,1 @@
+svcutil net.tcp://localhost:6789/mex /out:"MyProxy.cs" /config:"MyProxy.config"
