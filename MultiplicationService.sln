@@ -16,6 +16,29 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleHost", "ConsoleHost\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWindowsService", "MyWindowsService\MyWindowsService.csproj", "{F7D9816D-58B6-4859-B040-CB82AF056CF3}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MultiplicationServiceIIS", "MultiplicationServiceIIS\", "{3B752137-50F4-44D2-8F2E-27EE110E7911}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		ProjectReferences = "{b84d9cb9-d895-42c0-a43e-734f0565cf6b}|MultiplicationServiceLibrary.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_61953"
+		Debug.AspNetCompiler.PhysicalPath = "MultiplicationServiceIIS\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61953\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_61953"
+		Release.AspNetCompiler.PhysicalPath = "MultiplicationServiceIIS\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61953\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "61953"
+		SlnRelativePath = "MultiplicationServiceIIS\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +65,10 @@ Global
 		{F7D9816D-58B6-4859-B040-CB82AF056CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7D9816D-58B6-4859-B040-CB82AF056CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7D9816D-58B6-4859-B040-CB82AF056CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B752137-50F4-44D2-8F2E-27EE110E7911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B752137-50F4-44D2-8F2E-27EE110E7911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B752137-50F4-44D2-8F2E-27EE110E7911}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B752137-50F4-44D2-8F2E-27EE110E7911}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
