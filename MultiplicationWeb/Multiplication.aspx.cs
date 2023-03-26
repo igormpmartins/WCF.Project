@@ -1,10 +1,5 @@
 ﻿using MultiplicationWeb.ServiceReference;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace MultiplicationWeb
 {
@@ -17,8 +12,8 @@ namespace MultiplicationWeb
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            var client = new MultiplicationServiceClient("BasicHttpBinding_IMultiplicationService");
-            Response.Write(client.Multiply(5, 5));
+            var client = new NewMultiplicationServiceClient("BasicHttpBinding_NewMultiplicationService");
+            Response.Write(client.MultiplyDouble(5.3, 5.3));
         }
     }
 }

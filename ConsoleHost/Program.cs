@@ -17,12 +17,12 @@ namespace ConsoleHost
 
             var serviceHost = new ServiceHost(typeof(MultiplicationService), new Uri[] { tcpBaseAddress, httpBaseAddress });
 
-            var tcpServiceEndpoint = serviceHost.AddServiceEndpoint(typeof(IMultiplicationService), new NetTcpBinding(), tcpBaseAddress);
+            var tcpServiceEndpoint = serviceHost.AddServiceEndpoint(typeof(INewMultiplicationService), new NetTcpBinding(), tcpBaseAddress);
 
             var basicHttpBinding = new BasicHttpBinding();
             basicHttpBinding.OpenTimeout = new TimeSpan(0, 10, 0);
 
-            var httpServiceEndpoint = serviceHost.AddServiceEndpoint(typeof(IMultiplicationService), basicHttpBinding, httpBaseAddress);
+            var httpServiceEndpoint = serviceHost.AddServiceEndpoint(typeof(INewMultiplicationService), basicHttpBinding, httpBaseAddress);
 
             var serviceMetaBehavior = new ServiceMetadataBehavior();
             serviceMetaBehavior.HttpGetEnabled = false;

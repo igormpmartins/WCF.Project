@@ -69,7 +69,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference\MyMultiplicationService.disco" />
+    <None Include="Connected Services\ServiceReference\service.wsdl" />
+    <None Include="Connected Services\ServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\ServiceReference\Reference.svcmap">
@@ -78,9 +84,6 @@
     </None>
     <Content Include="Multiplication.aspx" />
     <Content Include="Web.config" />
-    <None Include="Connected Services\ServiceReference\MyMultiplicationService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\ServiceReference\Reference.cs">
@@ -98,10 +101,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference\MultiplicationService.wsdl" />
-    <None Include="Connected Services\ServiceReference\MyMultiplicationService.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
