@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MultiplicationServiceLibrary;
+using System;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using MultiplicationServiceLibrary;
 
 namespace ConsoleHost
 {
@@ -22,7 +18,11 @@ namespace ConsoleHost
             var serviceHost = new ServiceHost(typeof(MultiplicationService), new Uri[] { tcpBaseAddress, httpBaseAddress });
 
             var tcpServiceEndpoint = serviceHost.AddServiceEndpoint(typeof(IMultiplicationService), new NetTcpBinding(), tcpBaseAddress);
-            var httpServiceEndpoint = serviceHost.AddServiceEndpoint(typeof(IMultiplicationService), new WSHttpBinding(), httpBaseAddress);
+
+            var basicHttpBinding = new BasicHttpBinding();
+            basicHttpBinding.OpenTimeout = new TimeSpan(0, 10, 0);
+
+            var httpServiceEndpoint = serviceHost.AddServiceEndpoint(typeof(IMultiplicationService), basicHttpBinding, httpBaseAddress);
 
             var serviceMetaBehavior = new ServiceMetadataBehavior();
             serviceMetaBehavior.HttpGetEnabled = false;
@@ -43,6 +43,7 @@ namespace ConsoleHost
                 Console.WriteLine($"Address: {item.Address}");
                 Console.WriteLine($"Binding: {item.Binding}");
                 Console.WriteLine($"Contract: {item.Contract.Name}");
+                Console.WriteLine($"Open Timeout: {item.Binding.OpenTimeout}");
             }
 
             Console.ReadLine();
