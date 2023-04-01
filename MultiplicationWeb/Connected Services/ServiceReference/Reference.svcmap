@@ -25,6 +25,7 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="71cf14f3-b3a4-4cb5-83d4-6b8101116854" SourceId="1" SourceUrl="http://localhost:6790/MyHttpEndpoint/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="891a7347-3204-41b7-b6ae-49d7fa11636a" SourceId="1" SourceUrl="http://localhost:6790/MyHttpEndpoint/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="77df3381-3a55-4027-99d3-9875cbf7803e" SourceId="1" SourceUrl="http://localhost:6790/MyHttpEndpoint/mex" />
+    <MetadataFile FileName="MultiplicationServiceLibrary.xsd" MetadataType="Schema" ID="f564296d-df4c-462b-8b45-d991848cd34a" SourceId="1" SourceUrl="http://localhost:6790/MyHttpEndpoint/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

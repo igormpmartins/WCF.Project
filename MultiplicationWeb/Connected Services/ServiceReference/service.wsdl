@@ -62,6 +62,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/MultiplicationServiceLibrary" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="MultiplicationService_MultiplyInt_InputMessage">
@@ -70,16 +71,39 @@
   <wsdl:message name="MultiplicationService_MultiplyInt_OutputMessage">
     <wsdl:part name="parameters" element="tns:MultiplyIntResponse" />
   </wsdl:message>
+  <wsdl:message name="MultiplicationService_DivInt_InputMessage">
+    <wsdl:part name="parameters" element="tns:DivInt" />
+  </wsdl:message>
+  <wsdl:message name="MultiplicationService_DivInt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DivIntResponse" />
+  </wsdl:message>
+  <wsdl:message name="MultiplicationService_DivInt_DivFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/MultiplicationServiceLibrary" name="detail" element="q1:DivFault" />
+  </wsdl:message>
+  <wsdl:message name="NewMultiplicationService_DivInt_DivFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/MultiplicationServiceLibrary" name="detail" element="q2:DivFault" />
+  </wsdl:message>
   <wsdl:message name="NewMultiplicationService_MultiplyDouble_InputMessage">
     <wsdl:part name="parameters" element="tns:MultiplyDouble" />
   </wsdl:message>
   <wsdl:message name="NewMultiplicationService_MultiplyDouble_OutputMessage">
     <wsdl:part name="parameters" element="tns:MultiplyDoubleResponse" />
   </wsdl:message>
+  <wsdl:message name="NewMultiplicationService_Save_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save" />
+  </wsdl:message>
+  <wsdl:message name="NewMultiplicationService_Save_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
+  </wsdl:message>
   <wsdl:portType name="MultiplicationService">
     <wsdl:operation name="MultiplyInt">
       <wsdl:input wsaw:Action="http://tempuri.org/MultiplicationService/MultiplyInt" message="tns:MultiplicationService_MultiplyInt_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/MultiplicationService/MultiplyIntResponse" message="tns:MultiplicationService_MultiplyInt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DivInt">
+      <wsdl:input wsaw:Action="http://tempuri.org/MultiplicationService/DivInt" message="tns:MultiplicationService_DivInt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/MultiplicationService/DivIntResponse" message="tns:MultiplicationService_DivInt_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/MultiplicationService/DivIntDivFaultFault" name="DivFaultFault" message="tns:MultiplicationService_DivInt_DivFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="NewMultiplicationService">
@@ -87,9 +111,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/MultiplicationService/MultiplyInt" message="tns:MultiplicationService_MultiplyInt_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/MultiplicationService/MultiplyIntResponse" message="tns:MultiplicationService_MultiplyInt_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="DivInt">
+      <wsdl:input wsaw:Action="http://tempuri.org/MultiplicationService/DivInt" message="tns:MultiplicationService_DivInt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/MultiplicationService/DivIntResponse" message="tns:MultiplicationService_DivInt_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/MultiplicationService/DivIntDivFaultFault" name="DivFaultFault" message="tns:NewMultiplicationService_DivInt_DivFaultFault_FaultMessage" />
+    </wsdl:operation>
     <wsdl:operation name="MultiplyDouble">
       <wsdl:input wsaw:Action="http://tempuri.org/NewMultiplicationService/MultiplyDouble" message="tns:NewMultiplicationService_MultiplyDouble_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/NewMultiplicationService/MultiplyDoubleResponse" message="tns:NewMultiplicationService_MultiplyDouble_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input wsaw:Action="http://tempuri.org/NewMultiplicationService/Save" message="tns:NewMultiplicationService_Save_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/NewMultiplicationService/SaveResponse" message="tns:NewMultiplicationService_Save_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetNamedPipeBinding_MultiplicationService" type="tns:MultiplicationService">
@@ -104,6 +137,18 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DivInt">
+      <soap12:operation soapAction="http://tempuri.org/MultiplicationService/DivInt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DivFaultFault">
+        <soap12:fault use="literal" name="DivFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_NewMultiplicationService" type="tns:NewMultiplicationService">
     <wsp:PolicyReference URI="#NetTcpBinding_NewMultiplicationService_policy" />
@@ -117,8 +162,29 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DivInt">
+      <soap12:operation soapAction="http://tempuri.org/MultiplicationService/DivInt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DivFaultFault">
+        <soap12:fault use="literal" name="DivFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="MultiplyDouble">
       <soap12:operation soapAction="http://tempuri.org/NewMultiplicationService/MultiplyDouble" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap12:operation soapAction="http://tempuri.org/NewMultiplicationService/Save" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -138,8 +204,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DivInt">
+      <soap:operation soapAction="http://tempuri.org/MultiplicationService/DivInt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DivFaultFault">
+        <soap:fault use="literal" name="DivFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="MultiplyDouble">
       <soap:operation soapAction="http://tempuri.org/NewMultiplicationService/MultiplyDouble" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap:operation soapAction="http://tempuri.org/NewMultiplicationService/Save" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

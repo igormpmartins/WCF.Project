@@ -9,7 +9,146 @@
 //------------------------------------------------------------------------------
 
 namespace MultiplicationWeb.ServiceReference {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DivFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplicationServiceLibrary")]
+    [System.SerializableAttribute()]
+    public partial class DivFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OperationMessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OperationMessage {
+            get {
+                return this.OperationMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OperationMessageField, value) != true)) {
+                    this.OperationMessageField = value;
+                    this.RaisePropertyChanged("OperationMessage");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/MultiplicationServiceLibrary")]
+    [System.SerializableAttribute()]
+    public partial class Student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string ContactField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public string Contact {
+            get {
+                return this.ContactField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContactField, value) != true)) {
+                    this.ContactField = value;
+                    this.RaisePropertyChanged("Contact");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.MultiplicationService")]
@@ -20,6 +159,13 @@ namespace MultiplicationWeb.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MultiplicationService/MultiplyInt", ReplyAction="http://tempuri.org/MultiplicationService/MultiplyIntResponse")]
         System.Threading.Tasks.Task<int> MultiplyIntAsync(int a, int b);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MultiplicationService/DivInt", ReplyAction="http://tempuri.org/MultiplicationService/DivIntResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MultiplicationWeb.ServiceReference.DivFault), Action="http://tempuri.org/MultiplicationService/DivIntDivFaultFault", Name="DivFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplicationServiceLibrary")]
+        int DivInt(int a, int b);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MultiplicationService/DivInt", ReplyAction="http://tempuri.org/MultiplicationService/DivIntResponse")]
+        System.Threading.Tasks.Task<int> DivIntAsync(int a, int b);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -56,6 +202,14 @@ namespace MultiplicationWeb.ServiceReference {
         public System.Threading.Tasks.Task<int> MultiplyIntAsync(int a, int b) {
             return base.Channel.MultiplyIntAsync(a, b);
         }
+        
+        public int DivInt(int a, int b) {
+            return base.Channel.DivInt(a, b);
+        }
+        
+        public System.Threading.Tasks.Task<int> DivIntAsync(int a, int b) {
+            return base.Channel.DivIntAsync(a, b);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -68,11 +222,24 @@ namespace MultiplicationWeb.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MultiplicationService/MultiplyInt", ReplyAction="http://tempuri.org/MultiplicationService/MultiplyIntResponse")]
         System.Threading.Tasks.Task<int> MultiplyIntAsync(int a, int b);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MultiplicationService/DivInt", ReplyAction="http://tempuri.org/MultiplicationService/DivIntResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(MultiplicationWeb.ServiceReference.DivFault), Action="http://tempuri.org/MultiplicationService/DivIntDivFaultFault", Name="DivFault", Namespace="http://schemas.datacontract.org/2004/07/MultiplicationServiceLibrary")]
+        int DivInt(int a, int b);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MultiplicationService/DivInt", ReplyAction="http://tempuri.org/MultiplicationService/DivIntResponse")]
+        System.Threading.Tasks.Task<int> DivIntAsync(int a, int b);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewMultiplicationService/MultiplyDouble", ReplyAction="http://tempuri.org/NewMultiplicationService/MultiplyDoubleResponse")]
         double MultiplyDouble(double a, double b);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewMultiplicationService/MultiplyDouble", ReplyAction="http://tempuri.org/NewMultiplicationService/MultiplyDoubleResponse")]
         System.Threading.Tasks.Task<double> MultiplyDoubleAsync(double a, double b);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewMultiplicationService/Save", ReplyAction="http://tempuri.org/NewMultiplicationService/SaveResponse")]
+        void Save(MultiplicationWeb.ServiceReference.Student student);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NewMultiplicationService/Save", ReplyAction="http://tempuri.org/NewMultiplicationService/SaveResponse")]
+        System.Threading.Tasks.Task SaveAsync(MultiplicationWeb.ServiceReference.Student student);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -110,12 +277,28 @@ namespace MultiplicationWeb.ServiceReference {
             return base.Channel.MultiplyIntAsync(a, b);
         }
         
+        public int DivInt(int a, int b) {
+            return base.Channel.DivInt(a, b);
+        }
+        
+        public System.Threading.Tasks.Task<int> DivIntAsync(int a, int b) {
+            return base.Channel.DivIntAsync(a, b);
+        }
+        
         public double MultiplyDouble(double a, double b) {
             return base.Channel.MultiplyDouble(a, b);
         }
         
         public System.Threading.Tasks.Task<double> MultiplyDoubleAsync(double a, double b) {
             return base.Channel.MultiplyDoubleAsync(a, b);
+        }
+        
+        public void Save(MultiplicationWeb.ServiceReference.Student student) {
+            base.Channel.Save(student);
+        }
+        
+        public System.Threading.Tasks.Task SaveAsync(MultiplicationWeb.ServiceReference.Student student) {
+            return base.Channel.SaveAsync(student);
         }
     }
 }
