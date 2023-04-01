@@ -24,6 +24,11 @@ namespace MultiplicationWeb
                 Response.Write($"{ex.Detail.Message}<br/>");
                 Response.Write($"{ex.Detail.OperationMessage}<br/>");
             }
+            /*catch (FaultException<AnotherFault> ex)
+            {
+                Response.Write($"{ex.Detail.Message}<br/>");
+                Response.Write($"{ex.Detail.OperationMessage}<br/>");
+            }*/
 
             client.Save(new Student { Id = 123, Name = "That Guy" });
         }
